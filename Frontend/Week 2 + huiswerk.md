@@ -23,6 +23,17 @@ HTML, hypertext markup language wordt gebruikt voor het bouwen van een webpagina
 In de beginfases van het web domineerde de browser Mosaic het web. Daarna werd microsoft internet explorer een van de grooste. Door de jaren heen is er een _browswer war_ geweest: er werden de hele tijd nieuwe browsers ontwikkeld.
 
 #### Chapter 14: The Document Object Model
+Een HTML document is als het waren een box met daarin allemaal geneste boxen. Verschillende tags zoals body en head, hierin zitten weer andere tags.
+
+> We call a data structure a tree when it has a branching structure, has no cycles, and has a single, well-defined root. In the case of the DOM, document.documentElement serves as the root.
+
+DOM = Document Object Model. De dom heeft als het ware een boomstructuur, daarom wordt er vaak gesproken over 'tree'. Dit model wordt gebruikt zodat javascript de html kan manipuleren. Dit kan gedaan worden door bijvoorbeeld getElementsByTagName() of bijvoorbeeld getElementById(). Ook queryselector kan je gebruiker querySelectorAll()
+
+De DOM kan ook veranderd worden door insertBefore() en replaceChild(). Insertbefore gaat over toevoegen en replacechild gaat over vervangen.
+
+Voor de styling gebruiken we CSS, _Cascading Style Sheets_. 
+
+
 
 ```html
 <h1>Heading with a <span>span</span> element.</h1>
