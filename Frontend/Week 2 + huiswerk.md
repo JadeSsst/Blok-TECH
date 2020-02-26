@@ -63,6 +63,19 @@ Voor de styling gebruiken we CSS, _Cascading Style Sheets_.
   // → 2
 </script>
 ```
+### breakdown html/css
+#### HTML
+Html van het filter ontworpen. labels, buttons etc.
+
+![Schermafbeelding 2020-02-26 om 16 17 02](https://user-images.githubusercontent.com/24520560/75359230-67612a00-58b4-11ea-99c0-7de5a5c3bc41.png)
+
+
+#### CSS
+Css toegevoegd zodat alles er beter uit ziet. Uitlijning, consistentie etc.
+
+![Schermafbeelding 2020-02-26 om 16 16 52](https://user-images.githubusercontent.com/24520560/75359276-7ba52700-58b4-11ea-931a-db570acbdaac.png)
+
+
 
 ##### Bronnen
 https://www.freecodecamp.org/news/what-is-progressive-enhancement-and-why-it-matters-e80c7aaf834a/  
