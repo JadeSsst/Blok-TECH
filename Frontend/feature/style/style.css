@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Spartan&display=swap');
+
+/*input[type=range] {
+   position: absolute;
+   appearance: none;
+   background: linear-gradient(grey, grey) no-repeat center;
+   background-size: 100% 2px;
+}
+
+input[type=range]:nth-child(1+2) {
+  postition: absolute;
+}*/
+
+h1 {
+  text-align: center;
+  color: #ff2764;
+
+}
+
+h2 {
+  margin-top: 2.5em;
+  margin-bottom: -2em;
+  text-align: right;
+  font-size: 13px;
+  color: #b0aca8;
+}
+body {
+  font-family: 'Spartan', serif;
+  background: rgb(255,39,100);
+  background: linear-gradient(90deg, rgba(255,39,100,1) 0%, rgba(91,158,179,0) 50%, rgba(252,176,69,1) 100%);
+}
+
+label {
+  display: block;
+  padding: 1.5em 0 1em 0;
+  font-size: 13px;
+  font-weight: bold;
+  }
+
+input[type=range] {
+  width: 280px;
+}
+
+section {
+  margin-top: 2em;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 60px;
+  width: 280px;
+  border-radius: 20px;
+  box-shadow: 2px 3px 18px #888888;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  height: 5px;
+  background: #dbdbdb;
+  border-radius: 5px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 3px #dbdbdb;
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  background: #FF2764;
+  -webkit-appearance: none;
+  margin-top: -5px;
+}
+
+button {
+  width: 95px;
+  padding: 15px 0;
+  margin-right: -5px;
+  background-color: #FFfff;
+  font-family: 'Spartan', serif;
+  border-radius: 5px;
+
+  box-shadow: 0px 0px 1px #888888;
+}
+
+button:focus, button:hover, button:checked, #zoek:focus, #zoek:hover {
+  background-color: #ff2764;
+  outline: none;
+  color: white;
+}
+
+#zoek {
+  margin: 3em auto 2.5em auto;
+  display: block;
+  width: 150px;
+  padding: 1.5em;
+  background-color: black;
+  color: white;
+  font-weight: 900;
+  border-radius: 10px;
+}
