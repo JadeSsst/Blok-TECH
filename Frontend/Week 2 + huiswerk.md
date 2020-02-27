@@ -31,6 +31,8 @@ DOM = Document Object Model. De dom heeft als het ware een boomstructuur, daarom
 
 De DOM kan ook veranderd worden door insertBefore() en replaceChild(). Insertbefore gaat over toevoegen en replacechild gaat over vervangen.
 
+node is bijv p, h1 etc. DOM is document object model, dit is de structuur van de html, hoe alle elementen (nodes) er in zitten. 
+
 Voor de styling gebruiken we CSS, _Cascading Style Sheets_. 
 
 
