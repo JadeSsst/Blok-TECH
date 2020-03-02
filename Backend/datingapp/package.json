@@ -13,6 +13,7 @@
   "author": "Jade",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.0.1",
     "express": "^4.17.1",
     "nodemon": "^2.0.2",
     "repeat-string": "^1.6.1"
