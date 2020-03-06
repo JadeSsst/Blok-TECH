@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('head.ejs'); %>
+
+<body>
+<section>
+  <h1>Resultaten</h1>
+    <div class="basics">
+      <h2>Basics</h2>
+        <label for="gender">Ik zoek</label>
+        <div class="geslacht">
+          <p> <%= geslacht %> </p>
+        </div>
+
+
+
+        <label for="leeftijd" id="leeftijd">leeftijd</label>
+          <p> <%= leeftijd %> </p>
+        <label for="maximale afstand" id="afstand">Maximale afstand</label>
+          <p> <%= afstand %> </p>
+
+    </div>
+
+    <div class="extra">
+      <h2>Extra</h2>
+        <label for="rookt">Rookt</label>
+        <div class="roken">
+          <p> <%= roken %> </p>
+        </div>
+
+        <label for="kinderen">Kinderen</label>
+          <div class="roken">
+            <p> <%= kinderen %> </p>
+          </div>
+
+        <label for="lengte" id="lengte">lengte</label>
+          <p> <%= lengte %> </p>
+
+    </div>
+
+  </section>
+
+</body>
+
+</html>
