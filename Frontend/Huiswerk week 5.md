@@ -52,4 +52,66 @@ greaterThan20(user.preverence); // returns true
 
 ```
 
-### progressive enhancement (voorbeeld)  
+### Progressive enhancement (voorbeeld)  
+**HEEL HANIDIG**: attribute anamaken op je html aanmaken voor je js gaat zo: **data-hamburger**. nu heb je dus een hamburger attribute aangemaakt voor in je js
+```html
+<!-- wat we nou eigenlijk doen is ondanks dat we de list (nav) aan de bovenkant van de pagina in de html zetten, op de pagina index.html krijg je door display flex en order hem toch onderaan de paigna -->
+<div class="container">
+<a class="hamburger" href='#'>Hamburger menu</a>
+<nav>
+  <ul>
+    <li><a href='#'>item 1</a></li>
+    <li><a href='#'>item 2</a></li>
+    <li><a href='#'>item 3</a></li>
+    <li><a href='#'>item 4</a></li>
+  </ul>
+</nav>
+</div>
+```
+```css
+.container {
+  display: flex;
+  fles-direction: column:
+  max-width: 4-rem;
+  margin: 0 auto;
+}
+
+nav {
+  order: 1;
+}
+
+nav.js { /*je doet pas .js als die ge=enhanced is met js*/
+  position: fixed; /*blijft kleven aan de bovenkant*/
+  top: 0;
+  left: 0;
+  transform: translateX(-100%); /* tranlsateX is de x-as, translateY is de y-as. dus hij haalt hem nu 100% naar links*/
+  transition:  150ms transform /* is de animatie van X */
+  /*position absolute zorgt ervoor dat je element uit de flow van de DOM gaat*/
+  /*position fixed linkt hem aan de viewport*/
+}
+
+nav.js.is-open {
+  transform: translateX(0);
+
+ul {
+  list-style-type: none;
+}
+
+.hamburger {
+  align-self: flex-start; /*zorgt ervoor dat ie niet de hele breedte pakt*/
+}
+```
+``` js
+var menu = document.querySelector('nav');
+var hamburger = document.querySelector('[data-hamburger]');
+menu.classList.add('js') // zorgt ervoor dat je dus de class .js toevoegt wanneer js wordt gebruikt DUS progressive enhancement
+hamburger.addEventListener('click', function(event) {
+  event.preventDefault(); //hiermee zorg je ervoor dat de klik niet doet wat in de html is gedeclareerd
+  menu.classList.toggle('is-open');
+}
+
+#### Bronnen  
+https://www.freecodecamp.org/news/the-complete-guide-to-loops-in-javascript-f5e242921d8c/  
+Stof in de les behandeld  
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration#for...in_statement  
+https://medium.com/@js_tut/higher-order-functions-in-javascript-732dc7a1952d
