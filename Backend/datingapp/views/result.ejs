@@ -6,38 +6,41 @@
 <body>
 <section>
   <h1>Resultaten</h1>
-    <div class="basics">
-      <h2>Basics</h2>
-        <label for="gender">Ik zoek</label>
-        <div class="geslacht">
-          <p> <%= geslacht %> </p>
+
+      <h2>Filters</h2>
+      <div class="filters">
+        <div class="test">
+          <p>X</p>
+          <p class="box"> <%= geslacht %> </p>
         </div>
 
-
-
-        <label for="leeftijd" id="leeftijd">leeftijd</label>
-          <p> <%= leeftijd %> </p>
-        <label for="maximale afstand" id="afstand">Maximale afstand</label>
-          <p> <%= afstand %> </p>
-
-    </div>
-
-    <div class="extra">
-      <h2>Extra</h2>
-        <label for="rookt">Rookt</label>
-        <div class="roken">
-          <p> <%= roken %> </p>
+        <div class="test">
+          <p>X</p>
+          <p class="box"> <%= leeftijd %> jaar</p>
         </div>
 
-        <label for="kinderen">Kinderen</label>
-          <div class="roken">
-            <p> <%= kinderen %> </p>
-          </div>
+        <div class="test">
+          <p>X</p>
+          <p class="box"> <%= afstand %> km</p>
+        </div>
 
-        <label for="lengte" id="lengte">lengte</label>
-          <p> <%= lengte %> </p>
+        <div class="test">
+          <p>X</p>
+          <p class="box"> roken:  <%= roken %> </p>
+        </div>
 
-    </div>
+        <div class="test">
+          <p>X</p>
+          <p class="box"> kids: <%= kinderen %> </p>
+        </div>
+
+        <div class="test">
+          <p>X</p>
+          <p class="box"> <%= lengte %> cm </p>
+        </div>
+
+      </div>
+
 
   </section>
 
