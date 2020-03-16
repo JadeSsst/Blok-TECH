@@ -26,8 +26,7 @@ h2 {
 }
 body {
   font-family: 'Spartan', serif;
-  background: rgb(255,39,100);
-  background: linear-gradient(90deg, rgba(255,39,100,1) 0%, rgba(91,158,179,0) 50%, rgba(252,176,69,1) 100%);
+  background-color: #e6e5e1;
 }
 
 label {
