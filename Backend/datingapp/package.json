@@ -21,7 +21,7 @@
     "express-sessions": "^1.0.6",
     "jsdom": "^16.2.1",
     "mongodb": "^3.5.5",
-    "mongoose": "^5.9.4",
+    "mongoose": "^5.7.5",
     "multer": "^1.4.2",
     "nodemon": "^2.0.2",
     "repeat-string": "^1.6.1",
