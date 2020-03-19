@@ -14,6 +14,7 @@ input[type=range]:nth-child(1+2) {
 h1 {
   text-align: center;
   color: #ff2764;
+
 }
 
 h2 {
@@ -69,12 +70,13 @@ input[type=range] {
 }
 
 section {
-  margin-top: 2em;
+  margin-top: 1em;
   background-color: white;
   margin-left: auto;
   margin-right: auto;
   padding: 20px 60px;
   width: 280px;
+  height: 650px;
   border-radius: 20px;
   box-shadow: 2px 3px 18px #888888;
 }
@@ -108,22 +110,35 @@ input[type=range]::-webkit-slider-thumb {
   margin-top: -5px;
 }
 
+.filters {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.test {
+  display: flex;
+  justify-content: space-around;
+  background-color: grey;
+  font-size: 10.5px;
+  padding: 0px 4px;
+  margin: 3px 2.5px;
+  width: 80px;
+  text-align: center;
+  background-color: lightgrey;
+  color: black;
+  border-radius: 5px;
+  box-shadow: 0px 0px 1.5px #888888;
+}
+
+.box {
+  color: black;
+}
+
 button:focus, button:hover, button:checked, #zoek:focus, #zoek:hover {
   background-color: #ff2764;
   outline: none;
   color: white;
-}
-
-.aside p {
-  margin: 0px;
-  padding-left: 5px;
-}
-.aside {
-  font-size: 12px;
-  display: flex;
-  padding-top: 5px;
-  padding-left: 240px;
-  color: #b0aca8;
 }
 
 #zoek {

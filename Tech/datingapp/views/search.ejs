@@ -1,0 +1,47 @@
+<section>
+  <h1>Filters</h1>
+    <div class="basics">
+      <form class="filter" action="/add-movie" method="post">
+      <h2>Basics</h2>
+      <label for="gender">Ik zoek</label>
+      <div class="geslacht">
+        <input type="radio" id="man" name="geslacht" value="man">
+        <label for="man">man</label>
+        <input type="radio" id="vrouw" name="geslacht" value="vrouw">
+        <label for="vrouw">vrouw</label>
+        <input type="radio" id="anders" name="geslacht" value="man/vrouw">
+        <label for="anders">beide</label>
+      </div>
+      <label for="leeftijd" id="leeftijd">leeftijd</label>
+      <input type="range" min="0" max="100" name="leeftijd" value="23">
+      <label for="afstand">Maximale afstand</label>
+      <input type="range" min="1" max="200" name="afstand" value="20">
+    </div>
+
+    <div class="extra">
+      <h2>Extra</h2>
+      <label for="roken">Rookt</label>
+      <div class="roken">
+        <input type="radio" id="jaroken" name="roken" value="wel">
+        <label for="jaroken">ja</label>
+        <input type="radio" id="neeroken" name="roken" value="niet">
+        <label for="neeroken">nee</label>
+        <input type="radio" id="maaktnietuitroken" name="roken" value="mag">
+        <label for="maaktnietuitroken">alles prima</label>
+      </div>
+      <label for="kinderen">Kinderen</label>
+      <div class="roken">
+        <input type="radio" id="jakinderen" name="kinderen" value="ja">
+        <label for="jakinderen">ja</label>
+        <input type="radio" id="neekinderen" name="kinderen" value="nee">
+        <label for="neekinderen">nee</label>
+        <input type="radio" id="maaktnietuitkinderen" name="kinderen" value="mag">
+        <label for="maaktnietuitkinderen">alles prima</label>
+      </div>
+      <label for="lengte" id="lengte">lengte</label>
+      <input type="range" min="140" max="220" name="lengte" value="165">
+      <button id="zoek">Zoek mijn match</button>
+    </div>
+    </form>
+
+  </section>
