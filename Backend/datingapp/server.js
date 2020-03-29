@@ -100,15 +100,15 @@ function updateData(req, res, rest) {
 }
 
 
-function updateBio(req, res){
-	db.collection('profiles').updateOne(						           	// Update iets wat in de collection 'user' zit van MongoDB.
-		{_id: ObjectID(req.session.user._id)},							      // Zoek de _id in het ObjectID van MongoDB, met param.id die uit de url komt. De specifieke _id uit MongoDB, van de gebruiker die hier in de req.body.id zit.
-		{ $set: {biografie: req.body.updateBiografie} },          // verandert in de Mongo database de textProfile naar updateTextProfile die is ingevuld.
-		(err)=>{																		              // nieuwe manier van function schrijven.
-			if (err) throw err;												              // indien error, stuur error
-			res.redirect('update/' + req.session.user._id);	        // ga terug naar de mijn_profiel.ejs incl. de juiste _id uit de database. Geen req.session.user._id, omdat dat local was en je hier dus niet kan gebruiken.
-		});
-}
+// function updateBio(req, res){
+// 	db.collection('profiles').updateOne(						           	// Update iets wat in de collection 'user' zit van MongoDB.
+// 		{_id: ObjectID(req.session.user._id)},							      // Zoek de _id in het ObjectID van MongoDB, met param.id die uit de url komt. De specifieke _id uit MongoDB, van de gebruiker die hier in de req.body.id zit.
+// 		{ $set: {biografie: req.body.updateBiografie} },          // verandert in de Mongo database de textProfile naar updateTextProfile die is ingevuld.
+// 		(err)=>{																		              // nieuwe manier van function schrijven.
+// 			if (err) throw err;												              // indien error, stuur error
+// 			res.redirect('update/' + req.session.user._id);	        // ga terug naar de mijn_profiel.ejs incl. de juiste _id uit de database. Geen req.session.user._id, omdat dat local was en je hier dus niet kan gebruiken.
+// 		});
+// }
 
 // //voorbeeld
 // app.get('/update-data', findAndUpdateData);
