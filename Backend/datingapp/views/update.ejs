@@ -1,7 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('head.ejs'); %>
+
+<body>
 <section>
-  <h1>Filters</h1>
+  <h1>Filters aanpassen</h1>
     <div class="basics">
-      <form class="filter" action="/add-movie" method="post">
+      <form class="filter" action="/new-filters" method="post">
       <h2>Basics</h2>
       <label for="gender">Ik zoek</label>
       <div class="geslacht">
@@ -12,25 +18,10 @@
         <input type="radio" id="anders" name="geslacht" value="man/vrouw">
         <label for="anders">beide</label>
       </div>
-
-      <div class="sliders">
-        <label for="leeftijd" id="leeftijd">leeftijd</label>
-        <input type="range" min="0" max="100" name="leeftijd" value="20">
-        <div class="aside">
-          <span class="range-slider-value">20</span>
-          <p>jr.</p>
-        </div>
-      </div>
-
-      <div class="sliders">
-      <label for="maximale afstand">Maximale afstand</label>
-        <input type="range" min="1" max="200" value="50">
-        <div class="aside">
-          <span class="range-slider-value">20</span>
-          <p>km</p>
-        </div>
-      </div>
-
+      <label for="leeftijd" id="leeftijd">leeftijd</label>
+      <input type="range" min="0" max="100" name="leeftijd" value="23">
+      <label for="afstand">Maximale afstand</label>
+      <input type="range" min="1" max="200" name="afstand" value="20">
     </div>
 
     <div class="extra">
@@ -53,18 +44,16 @@
         <input type="radio" id="maaktnietuitkinderen" name="kinderen" value="mag">
         <label for="maaktnietuitkinderen">alles prima</label>
       </div>
-
-      <div class="sliders">
-        <label for="lengte" id="lengte">lengte</label>
-        <input type="range" min="0" max="100" name="lengte" value="10">
-        <div class="aside">
-          <span class="range-slider-value">50</span>
-          <p>cm</p>
-        </div>
-      </div>
-
-      <button id="zoek">Zoek mijn match</button>
+      <label for="lengte" id="lengte">lengte</label>
+      <input type="range" min="140" max="220" name="lengte" value="165">
+      <button id="zoek">Pas filters aan</button>
     </div>
     </form>
-      <script type="text/javascript" src="/static/js/script.js"></script>
+
   </section>
+
+  <script type="text/javascript" src="/static/js/script.js">
+
+  </script>
+
+  </html>

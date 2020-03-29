@@ -6,52 +6,53 @@
 <body>
 <section>
   <h1>Resultaten</h1>
+  <form action="/update" method="post">
 
       <h2>Filters</h2>
       <div class="filters">
-        <button class="test">
+        <div class="test">
           <p>X</p>
           <p class="box"> <%= geslacht %> </p>
-        </button>
+        </div>
 
 <!-- <input type="text" class="test" value="<%= geslacht %>" placeholder="<%= geslacht %>"> -->
-        <button class="test">
+        <div class="test">
           <p>X</p>
           <p class="box"> <%= leeftijd %> jaar</p>
-        </button>
+        </div>
 
-        <button class="test">
+        <div class="test">
           <p>X</p>
           <p class="box"> <%= afstand %> km</p>
-        </button>
+        </div>
 
-        <button class="test">
+        <div class="test">
           <p>X</p>
           <p class="box"> roken:  <%= roken %> </p>
-        </button>
+        </div>
 
-        <button class="test">
+        <div class="test">
           <p>X</p>
           <p class="box"> kids: <%= kinderen %> </p>
-        </button>
+        </div>
 
-        <button class="test">
+        <div class="test">
           <p>X</p>
           <p class="box"> <%= lengte %> cm </p>
-        </button>
+        </div>
 
-        <a href="" class="aanpassen">Pas keuze aan</a>
-        <!-- <button class="aanpassen">
-          <p>Pas keuze aan</p>
-        </button> -->
+        <button class="aanpassen">Pas aan</button>
+
 
       </div>
 
-      <script type="text/javascript" src="/static/js/script.js">
 
-      </script>
   </section>
-
+</form>
 </body>
+
+<script type="text/javascript" src="/static/js/script.js">
+
+</script>
 
 </html>

@@ -123,7 +123,7 @@ input[type=range]::-webkit-slider-thumb {
   font-size: 10.5px;
   padding: 0px 4px;
   margin: 3px 2.5px;
-  width: 88px;
+  width: 80px;
   text-align: center;
   background-color: lightgrey;
   color: black;
@@ -132,6 +132,7 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 .aanpassen {
+  border: none;
   width: 280px;
   font-size: 13px;
   text-decoration: none;
@@ -148,6 +149,18 @@ button:focus, button:hover, button:checked, #zoek:focus, #zoek:hover {
   background-color: #ff2764;
   outline: none;
   color: white;
+}
+
+.aside p {
+  margin: 0px;
+  padding-left: 5px;
+}
+.aside {
+  font-size: 12px;
+  display: flex;
+  padding-top: 5px;
+  padding-left: 240px;
+  color: #b0aca8;
 }
 
 #zoek {

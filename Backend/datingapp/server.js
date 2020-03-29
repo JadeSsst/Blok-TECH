@@ -31,10 +31,17 @@ function results(req, res) {
   })
 }
 
-adjust.addEventListener('click', update);
+app.post('/update', hoi);
+// zorgt ervoor dat het formulier verzonden wordt en redirect naar andere pagina
+function hoi(req, res) {
+  console.log("gepost?");
+  res.redirect('/update');
+}
 
+app.get('/update', update);
+// zorgt ervoor dat de filters aanpassen pagina verschijnt
 function update(req, res) {
-  res.render('index.ejs')
+  res.render('update.ejs'); // aanpas pagina!!!
   console.log("naar andere pagina");
 }
 
@@ -53,48 +60,83 @@ function addFilter(req, res) {
   });
 }
 
-//voorbeeld
-app.get('/add-data', insertData);
-//voorbeeld
-function insertData(req, res) {
-  db.collection('test').insertOne(
-    { name: 'Randy'},
-    (err, result) => {
-      if (err) throw err;
-      res.status(200).send('YAAAAAAY');
-    })
+// //voorbeeld
+// app.get('/add-data', insertData);
+// //voorbeeld
+// function insertData(req, res) {
+//   db.collection('test').insertOne(
+//     { name: 'Randy'},
+//     (err, result) => {
+//       if (err) throw err;
+//       res.status(200).send('YAAAAAAY');
+//     })
+// }
 
-}
+app.post('/new-filters', findAndUpdateData);
 
-//voorbeeld
-app.get('/update-data', findAndUpdateData);
-//voorbeeld
 function findAndUpdateData(req, res) {
-  db.collection('test').findOne(
-    { name: 'Randy' },                //property waar je op zoekt
-    (err, result) => {               // mongodb callback
-      if (err) throw err;
-      const id = result._id;        // id van object die we net hebben aangemaakt
-
-      updateData(id, () => {
-        res.status(200).send('Yay geupdate');
-      });
-    })
-  }
-
-
-
-function updateData(id, callback) {
-  // voorbeeld voor als je met formulier doet: const data = req.body.data
-  db.collection('test').updateOne(    // van mongodb
-  {_id: ObjectID(id) },               // 1. waar je op zoekt
-  { $set: {title: 'bye!' } },         // 2. property dieje wil aanpassen via set
-  (err, result) => {                  // 3.
+  db.collection('filters').find(new ObjectID(req.params.id),(err,result) => {
     if (err) throw err;
-
-    callback()
+    const id= result._id;
+    updateData(req, res, () => {
+      res.render('result.ejs', data[0]);
+    })
   })
 }
+
+function updateData(req, res, rest) {
+  db.collection('filters').update(
+    {_id: ObjectID(req.params.id)},
+    { $set: {
+      geslacht: req.body.geslacht,
+      leeftijd: req.body.leeftijd,
+      afstand: req.body.afstand,
+      roken: req.body.roken,
+      kinderen: req.body.kinderen,
+      lengte: req.body.lengte, }},
+    (err) => {
+        if (err) throw err;
+  })
+}
+
+
+function updateBio(req, res){
+	db.collection('profiles').updateOne(						           	// Update iets wat in de collection 'user' zit van MongoDB.
+		{_id: ObjectID(req.session.user._id)},							      // Zoek de _id in het ObjectID van MongoDB, met param.id die uit de url komt. De specifieke _id uit MongoDB, van de gebruiker die hier in de req.body.id zit.
+		{ $set: {biografie: req.body.updateBiografie} },          // verandert in de Mongo database de textProfile naar updateTextProfile die is ingevuld.
+		(err)=>{																		              // nieuwe manier van function schrijven.
+			if (err) throw err;												              // indien error, stuur error
+			res.redirect('update/' + req.session.user._id);	        // ga terug naar de mijn_profiel.ejs incl. de juiste _id uit de database. Geen req.session.user._id, omdat dat local was en je hier dus niet kan gebruiken.
+		});
+}
+
+// //voorbeeld
+// app.get('/update-data', findAndUpdateData);
+// //voorbeeld
+// function findAndUpdateData(req, res) {
+//   db.collection('test').findOne(
+//     { name: 'Randy' },                //property waar je op zoekt
+//     (err, result) => {               // mongodb callback
+//       if (err) throw err;
+//       const id = result._id;        // id van object die we net hebben aangemaakt
+//
+//       updateData(id, () => {
+//         res.status(200).send('Yay geupdate');
+//       });
+//     })
+//   }
+//
+// function updateData(id, callback) {
+//   // voorbeeld voor als je met formulier doet: const data = req.body.data
+//   db.collection('test').updateOne(    // van mongodb
+//   {_id: ObjectID(id) },               // 1. waar je op zoekt
+//   { $set: {title: 'bye!' } },         // 2. property dieje wil aanpassen via set
+//   (err, result) => {                  // 3.
+//     if (err) throw err;
+//
+//     callback()
+//   })
+// }
 
 
 // routes bepalen + static folders + views voor ejs

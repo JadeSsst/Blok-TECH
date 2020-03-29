@@ -1,6 +1,13 @@
 /* eslint-env browser */
+const sliders = document.querySelectorAll('.sliders');
 
-const adjust = document.getElementsByClassName('aanpassen')
+Array.prototype.forEach.call(sliders,(slider) =>{
+  slider.querySelector('input').addEventListener('input', (event) =>{
+    slider.querySelector('span').innerHTML = event.target.value;
+  });
+});
+
+const adjust = document.querySelector('a')
 
 
 adjust.addEventListener('click', () => {
