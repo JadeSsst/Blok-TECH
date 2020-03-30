@@ -76,7 +76,7 @@ section {
   margin-right: auto;
   padding: 20px 60px;
   width: 280px;
-  height: 650px;
+  height: 755px;
   border-radius: 20px;
   box-shadow: 2px 3px 18px #888888;
 }
@@ -161,6 +161,55 @@ button:focus, button:hover, button:checked, #zoek:focus, #zoek:hover {
   padding-top: 5px;
   padding-left: 240px;
   color: #b0aca8;
+}
+
+button {
+  padding: 20px;
+  transition: 400ms;
+}
+
+button.away {
+  opacity: 0.0;
+}
+
+section.away {
+  opacity 0.0;
+  margin-top: -3em;
+  transform: translateX(1200px);
+  transition: 600ms transform;
+  transition-timing-function: ease-in-out;
+}
+
+section.apear {
+  opacityL 1.0;
+  transform: translateX(0);
+}
+
+.basics.away {
+  opacity: 0.0;
+}
+
+.basics.apear {
+  transition: 6000ms;
+  opacity: 1.0;
+}
+
+.extra.away {
+  opacity: 0.0;
+}
+
+.extra.apear {
+  transition: 9000ms;
+  opacity: 1.0;
+}
+
+h1.away {
+  opacity: 0.0;
+}
+
+h1.apear {
+  transition: 3000ms;
+  opacity: 1.0;
 }
 
 #zoek {

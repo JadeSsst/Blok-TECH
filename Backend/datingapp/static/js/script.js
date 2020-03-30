@@ -7,9 +7,24 @@ Array.prototype.forEach.call(sliders,(slider) =>{
   });
 });
 
-const adjust = document.querySelector('a')
-
-
-adjust.addEventListener('click', () => {
-  console.log("goed gelinkt");
-})
+// const filterButton = document.querySelector('button');
+// const section = document.querySelector('section');
+// const extraFilters = document.querySelector(".extra");
+// const basicFilters = document.querySelector(".basics");
+// const titel = document.querySelector('h1');
+//
+// section.classList.add('away');
+// extraFilters.classList.add('away');
+// basicFilters.classList.add('away');
+// titel.classList.add('away');
+//
+//
+// filterButton.addEventListener('click', function() {
+//   event.preventDefault();
+//   section.classList.toggle('apear');
+//   filterButton.classList.toggle('away');
+//   extraFilters.classList.toggle('apear');
+//   basicFilters.classList.toggle('apear');
+//   titel.classList.toggle('apear');
+//   console.log("geklikt");
+// })
