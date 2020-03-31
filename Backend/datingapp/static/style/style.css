@@ -1,72 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Spartan&display=swap');
 
-/*input[type=range] {
-   position: absolute;
-   appearance: none;
-   background: linear-gradient(grey, grey) no-repeat center;
-   background-size: 100% 2px;
-}
-
-input[type=range]:nth-child(1+2) {
-  postition: absolute;
-}*/
-
 h1 {
   text-align: center;
   color: #ff2764;
-
 }
 
 h2 {
   margin-top: 2.5em;
+  padding-right: 2.5px;
   margin-bottom: -2em;
   text-align: right;
   font-size: 13px;
   color: #b0aca8;
 }
+
 body {
   font-family: 'Spartan', serif;
   background-color: #e6e5e1;
-}
-
-label {
-  display: block;
-  padding: 1.5em 0 1em 0;
-  font-size: 13px;
-  font-weight: bold;
-  }
-
-.geslacht label, .roken label {
-  text-align: center;
-  width: 97px;
-  padding: 15px 0;
-  background-color: #FFfff;
-  font-family: 'Spartan', serif;
-  border-radius: 5px;
-  border: 0.5px solid lightgrey;
-  box-shadow: 0px 0px 1.5px #888888;
-  font-weight: normal;
-  font-size: 12px;
-}
-
-.geslacht label:hover, .roken label:hover{
-  background-color: #ff2764;
-  outline: none;
-  color: white;
-}
-
-.geslacht input[type=radio]:checked + label, .roken input[type=radio]:checked + label  {
-  background-color: #ff2764;
-  color: white;
-}
-
-.geslacht, .roken  {
-  display: flex;
-  justify-content: space-between;
-}
-
-input[type=range] {
-  width: 280px;
 }
 
 section {
@@ -79,6 +29,28 @@ section {
   height: 755px;
   border-radius: 20px;
   box-shadow: 2px 3px 18px #888888;
+}
+
+section button {
+  margin: 3em auto 2.5em auto;
+  display: block;
+  width: 150px;
+  padding: 1.5em;
+  background-color: black;
+  color: white;
+  font-weight: 900;
+  border-radius: 10px;
+}
+
+label {
+  display: block;
+  padding: 1.5em 0 1em 0;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+input[type=range] {
+  width: 280px;
 }
 
 input[type=radio] {
@@ -110,13 +82,42 @@ input[type=range]::-webkit-slider-thumb {
   margin-top: -5px;
 }
 
+.options label {
+  text-align: center;
+  width: 97px;
+  padding: 15px 0;
+  background-color: #FFfff;
+  font-family: 'Spartan', serif;
+  border-radius: 5px;
+  border: 0.5px solid lightgrey;
+  box-shadow: 0px 0px 1.5px #888888;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.options label:hover {
+  background-color: #ff2764;
+  outline: none;
+  color: white;
+}
+
+.options input[type=radio]:checked + label {
+  background-color: #ff2764;
+  color: white;
+}
+
+.options  {
+  display: flex;
+  justify-content: space-between;
+}
+
 .filters {
   margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
 }
 
-.test {
+.result {
   display: flex;
   justify-content: space-around;
   background-color: grey;
@@ -131,21 +132,25 @@ input[type=range]::-webkit-slider-thumb {
   box-shadow: 0px 0px 1.5px #888888;
 }
 
-.aanpassen {
+.adjustFilters {
+  background-color: white;
+  padding: 2px;
   border: none;
   width: 280px;
-  font-size: 13px;
+  font-size: 12px;
   text-decoration: none;
-  margin: 15px 2.5px;
+  margin: 15px 2.3px;
   text-align: right;
   color: #ff2764;
+  font-family: 'Spartan', serif;
 }
 
-.box {
-  color: black;
+.adjustFilters:hover {
+  background-color: white;
+  color: lightgrey;
 }
 
-button:focus, button:hover, button:checked, #zoek:focus, #zoek:hover {
+button:focus, button:hover, button:checked {
   background-color: #ff2764;
   outline: none;
   color: white;
@@ -162,6 +167,11 @@ button:focus, button:hover, button:checked, #zoek:focus, #zoek:hover {
   padding-left: 240px;
   color: #b0aca8;
 }
+
+
+/*************************************************
+THINGS TO DO WITH JAVASCRIPT ADD CLASSES
+*************************************************/
 
 button {
   padding: 20px;
@@ -210,15 +220,4 @@ h1.away {
 h1.apear {
   transition: 3000ms;
   opacity: 1.0;
-}
-
-#zoek {
-  margin: 3em auto 2.5em auto;
-  display: block;
-  width: 150px;
-  padding: 1.5em;
-  background-color: black;
-  color: white;
-  font-weight: 900;
-  border-radius: 10px;
 }

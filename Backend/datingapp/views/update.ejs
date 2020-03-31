@@ -7,10 +7,10 @@
   <section>
     <h1>Filters aanpassen</h1>
       <div class="basics">
-        <form class="filter" action="/update-filters" method="post">
+        <form class="filter" action="/update-filters/ <%= id %>" method="POST">
         <h2>Basics</h2>
         <label for="gender">Ik zoek</label>
-        <div class="geslacht">
+        <div class="options">
           <input type="radio" id="man" name="geslacht" value="man">
           <label for="man">man</label>
           <input type="radio" id="vrouw" name="geslacht" value="vrouw">
@@ -42,7 +42,7 @@
       <div class="extra">
         <h2>Extra</h2>
         <label for="roken">Rookt</label>
-        <div class="roken">
+        <div class="options">
           <input type="radio" id="jaroken" name="roken" value="wel">
           <label for="jaroken">ja</label>
           <input type="radio" id="neeroken" name="roken" value="niet">
@@ -51,7 +51,7 @@
           <label for="maaktnietuitroken">alles prima</label>
         </div>
         <label for="kinderen">Kinderen</label>
-        <div class="roken">
+        <div class="options">
           <input type="radio" id="jakinderen" name="kinderen" value="ja">
           <label for="jakinderen">ja</label>
           <input type="radio" id="neekinderen" name="kinderen" value="nee">
@@ -69,7 +69,7 @@
           </div>
         </div>
 
-        <button id="zoek">pas filters aan</button>
+        <button>pas filters aan</button>
       </div>
       </form>
         <script type="text/javascript" src="/static/js/script.js"></script>

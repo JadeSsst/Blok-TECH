@@ -6,49 +6,50 @@
 <body>
 <section>
   <h1>Resultaten</h1>
-  <form action="/update" method="post">
+  <!-- <form action="/update" method="post"> -->
 
       <h2>Filters</h2>
       <div class="filters">
-        <div class="test">
+        <div class="result">
           <p>X</p>
-          <p class="box"> <%= geslacht %> </p>
+          <p> <%= data.geslacht %> </p>
         </div>
 
-<!-- <input type="text" class="test" value="<%= geslacht %>" placeholder="<%= geslacht %>"> -->
-        <div class="test">
+        <div class="result">
           <p>X</p>
-          <p class="box"> <%= leeftijd %> jaar</p>
+          <p> <%= data.leeftijd %> jaar</p>
         </div>
 
-        <div class="test">
+        <div class="result">
           <p>X</p>
-          <p class="box"> <%= afstand %> km</p>
+          <p> <%= data.afstand %> km</p>
         </div>
 
-        <div class="test">
+        <div class="result">
           <p>X</p>
-          <p class="box"> roken:  <%= roken %> </p>
+          <p> roken:  <%= data.roken %> </p>
         </div>
 
-        <div class="test">
+        <div class="result">
           <p>X</p>
-          <p class="box"> kids: <%= kinderen %> </p>
+          <p> kids: <%= data.kinderen %> </p>
         </div>
 
-        <div class="test">
+        <div class="result">
           <p>X</p>
-          <p class="box"> <%= lengte %> cm </p>
+          <p> <%= data.lengte %> cm </p>
         </div>
 
-        <button class="aanpassen">Pas aan</button>
+        <a href="/adjust-filters/ <%= id %>">AANPASSEN</a>
+
+        <!-- <button class="adjustFilters">Pas aan</button> -->
 
 
       </div>
 
 
   </section>
-</form>
+<!-- </form> -->
 </body>
 
 <script type="text/javascript" src="/static/js/script.js">
