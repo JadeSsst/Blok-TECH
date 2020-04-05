@@ -4,7 +4,7 @@
 <%- include('head.ejs'); %>
 
 <body>
-<section>
+<section data-page="filter">
   <h1>Resultaten</h1>
   <!-- <form action="/update" method="post"> -->
 
@@ -40,10 +40,7 @@
           <p> <%= data.lengte %> cm </p>
         </div>
 
-        <a href="/adjust-filters/ <%= id %>">AANPASSEN</a>
-
-        <!-- <button class="adjustFilters">Pas aan</button> -->
-
+        <a class="adjustFilters" href="/adjust-filters/ <%= id %>">pas filters aan</a>
 
       </div>
 
@@ -52,8 +49,6 @@
 <!-- </form> -->
 </body>
 
-<script type="text/javascript" src="/static/js/script.js">
-
-</script>
+<!-- <script type="text/javascript" src="/static/js/script.js"></script> -->
 
 </html>

@@ -1,4 +1,4 @@
-// zorgt ervoor dat variable uit .env beschikbaar zijn
+// zorgt ervoor dat variabelen uit .env beschikbaar zijn
 require('dotenv').config();
 
 // constante variabelen aanmaken
@@ -7,13 +7,34 @@ const app = express()
 const port = 1900
 const slug = require('slug')
 const bodyParser = require('body-parser')
-const mySearch = [];
+const urlencodedParser = bodyParser.urlencoded({ extended: true });
+const session = require('express-session')
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 const url = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASSWORD + "@datingapp-jarbx.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(url, { useNewUrlParser: true });
-const session = require('express-session')
 var db;
+
+// static folders + views voor ejs + bodyparser + sessions
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+app.use('/static', express.static(__dirname + '/static'));
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json())
+app.use(session({
+    resave: false,
+    saveUninitialized: true,
+    secret: process.env.SESSION_SECRET
+  }))
+
+// routes bepalen
+app.post('/add-filter', addFilter);
+app.post('/update-filters/:id', findAndUpdateData);
+app.get('/filter/:id', results);
+app.get('/adjust-filters/:id', update);
+app.get('/new-filter/:id', destroy);
+app.get('/', (req, res) => res.render('index.ejs'));
+app.get('*', (req, res) => res.send('404 ERROR NOT FOUND - made by meeeeee'))
 
 // functie om met de database te connecten
 client.connect((err, client) => {
@@ -23,18 +44,9 @@ client.connect((err, client) => {
   db = client.db(process.env.DB_NAME);
 });
 
-// functie om de aangeklikte filteropties die in de database gestopt zijn, weer terug te renderen op een nieuwe pagina
-function results(req, res) {
-  db.collection('filtersTwee').find(new ObjectID(req.params.id)).toArray(function (err, data) {
-    console.log(req.params.id);
-    console.log(data);
-    res.render('result.ejs', {id: req.params.id, data: data[0]});
-  })
-}
-
 // functie zodat de geselecteerde filteropties worden onthouden en in een database collection worden gestopt
 function addFilter(req, res) {
-  const result = db.collection('filtersTwee').insertOne({
+  const result = db.collection('filters').insertOne({
     geslacht: req.body.geslacht,
     leeftijd: req.body.leeftijd,
     afstand: req.body.afstand,
@@ -42,73 +54,64 @@ function addFilter(req, res) {
     kinderen: req.body.kinderen,
     lengte: req.body.lengte,
   }, function (err, result) {
-    res.redirect('/movie/' + result.insertedId);
+    res.redirect('/filter/' + result.insertedId);
   });
 }
 
-app.get('/adjust-filters/:id', update);
-// functie die wanneer er op 'pas aan' geklikt wordt, de update pagina laat zien met de juiste id in de url
-function update(req, res) {
-  res.render('update.ejs', {id: req.params.id});
-  console.log(req.params.id);
-}
-
-app.post('/update-filters/:id', findAndUpdateData);
-// functie die ervoor zorgt dat juiste id wordt gevonden en die dan de functie updateData aanroept
-function findAndUpdateData(req, res) {
-  console.log("HEX 24 " + req.params.id);
-  db.collection('filtersTwee').findOne(
-   {_id: ObjectID(req.params.id)},
-    (err, result) => {
+// functie om de aangeklikte filteropties die in de database gestopt zijn, weer terug te renderen op een nieuwe pagina
+function results(req, res) {
+  db.collection('filters').find(new ObjectID(slug(req.params.id))).toArray(done)
+  function done(err, data) {
     if (err) throw err;
-    const id = result._id;                            t
-
-    updateData(id, () => {
-      res.redirect('/movie/' + id);
-    });
-  })
+    console.log(data);
+    res.render('result.ejs', {id: req.params.id, data: data[0]})
+  }
 }
 
-// function findAndUpdateData(req, res) {
-//   db.collection('filters').find(new ObjectID(req.params.id),(err,result) => {
-//     console.log(req.params.id);
-//     if (err) throw err;
-//     const id= result._id;
-//     res.redirect('/movie/' + id);
-//   })
-// }
+// functie die wanneer er op 'pas filters aan' geklikt wordt, de update pagina laat zien met de juiste id in de url
+// functie zorgt ook voor de sessions van pageview
+function update(req, res) {
+  if(req.session.views) {
+      req.session.views++;
+      console.log("Je hebt deze pagina al " + req.session.views + " keer bekeken");
+    if(req.session.views == 4) {
+      console.log("Aantal keer filteren heeft de max bereikt");
+      res.render('cookie.ejs', {id: req.params.id});
+    } else {
+      res.render('update.ejs', {id: req.params.id});
+    }} else if(true) {
+      req.session.views = 1;
+      console.log("Deze pagina zie je nu voor de eerste keer");
+      res.render('update.ejs', {id: req.params.id});
+  }
+}
 
-// functie die de nieuwe info koppelt aan de data en update
-function updateData(req, res) {
-  db.collection('filtersTwee').updateOne(
-    {_id: ObjectID(req.params.id)},
-    { $set: {
-      geslacht: req.body.geslacht,
+// functie die ervoor zorgt dat juiste id wordt gevonden en daarna de gegevens in de database udpate
+function findAndUpdateData(req, res){
+	db.collection('filters').updateOne(
+		{_id: new ObjectID(slug(req.params.id))},
+		{$set:
+      { geslacht: req.body.geslacht,
       leeftijd: req.body.leeftijd,
       afstand: req.body.afstand,
       roken: req.body.roken,
       kinderen: req.body.kinderen,
-      lengte: req.body.lengte, }},
-    (err) => {
-        if (err) throw err;
-  })
+      lengte: req.body.lengte
+    }}, function(err) {
+			if (err) throw err;
+      console.log("Gegevens zijn geupdate");
+			res.redirect('/filter/' + req.params.id);
+		})
 }
 
-// routes bepalen + static folders + views voor ejs
-app.use('/static', express.static(__dirname + '/static'));
-app.use(bodyParser.urlencoded({extended:true}));
-app.set('view engine', 'ejs');
-app.set('views', 'views');
-app.use(session({
-    resave: false,
-    saveUninitialized: true,
-    secret: process.env.SESSION_SECRET
-  }))
-app.post('/update-filters', findAndUpdateData);
-app.post('/add-movie', addFilter);
-app.get('/movie/:id', results);
-app.get('/', (req, res) => res.render('index.ejs'));
-app.get('*', (req, res) => res.send('404 ERROR NOT FOUND - made by meeeeee'))
+// functie voor destroyen van de cookies
+function destroy(req, res) {
+  req.session.destroy(function (err) {
+    if (err) throw err;
+    console.log("Sessions zijn destroyd, kunnen weer opnieuw beginnen");
+    res.render('update.ejs', {id: req.params.id});
+  })
+}
 
 // listen als laatste, dit is op welke port de local host draait
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

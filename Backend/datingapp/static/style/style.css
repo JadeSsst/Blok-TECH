@@ -191,7 +191,7 @@ section.away {
 }
 
 section.apear {
-  opacityL 1.0;
+
   transform: translateX(0);
 }
 
@@ -200,7 +200,7 @@ section.apear {
 }
 
 .basics.apear {
-  transition: 6000ms;
+  transition: 4000ms;
   opacity: 1.0;
 }
 
@@ -209,7 +209,7 @@ section.apear {
 }
 
 .extra.apear {
-  transition: 9000ms;
+  transition: 7000ms;
   opacity: 1.0;
 }
 
